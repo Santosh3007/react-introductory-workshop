@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Post } from "../interfaces";
 import { useDispatch } from "react-redux";
 import { addPost } from "../redux/postsSlice";
+
 import "./NewPost.css";
 
 const NewPost = () => {
@@ -10,7 +11,7 @@ const NewPost = () => {
   const [content, setContent] = useState("");
   const dispatch = useDispatch();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     const newPost: Post = { heading: heading, content: content };
     dispatch(addPost(newPost));
     e.preventDefault();

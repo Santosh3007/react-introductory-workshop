@@ -1,9 +1,10 @@
-import { Card, Elevation, Button } from "@blueprintjs/core";
 import React, { useState } from "react";
+import { Card, Elevation, Button } from "@blueprintjs/core";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { setIsAuthenticated } from "../redux/postsSlice";
 import { useHistory } from "react-router-dom";
+
 import "./Login.css";
 
 const Login = () => {
@@ -12,7 +13,7 @@ const Login = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     axios
       .get("https://mocki.io/v1/fb8c09ce-5796-41e1-b0be-ad046f6c87db")
       .then((response) => {

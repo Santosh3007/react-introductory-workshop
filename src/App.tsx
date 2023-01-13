@@ -20,6 +20,7 @@ function App() {
     <Router>
       <div className="App">
         <Switch>
+          {/* Renders route only if authenticated */}
           {isAuthenticated && (
             <Route path="/home">
               <Home />
@@ -28,6 +29,7 @@ function App() {
           <Route exact path="/">
             <Login />
           </Route>
+          {/* Redirects all other invalid routes */}
           <Route path="*">
             <Redirect to="/" />
           </Route>

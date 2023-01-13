@@ -1,5 +1,5 @@
-import { Card, Elevation } from "@blueprintjs/core";
 import React from "react";
+import { Card, Elevation } from "@blueprintjs/core";
 import { Post } from "../interfaces";
 
 interface Props {
