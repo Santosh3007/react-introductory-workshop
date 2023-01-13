@@ -1,12 +1,18 @@
 import { Button, Card, Elevation, TextArea } from "@blueprintjs/core";
 import React, { useState } from "react";
+import { Post } from "../interfaces";
+import { useDispatch } from "react-redux";
+import { addPost } from "../redux/postsSlice";
 import "./NewPost.css";
 
 const NewPost = () => {
   const [heading, setHeading] = useState("");
   const [content, setContent] = useState("");
+  const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
+    const newPost: Post = { heading: heading, content: content };
+    dispatch(addPost(newPost));
     e.preventDefault();
   };
 
