@@ -1,11 +1,16 @@
 import { Card, Elevation, Button } from "@blueprintjs/core";
 import React, { useState } from "react";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { setIsAuthenticated } from "../redux/postsSlice";
+import { useHistory } from "react-router-dom";
 import "./Login.css";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
+  const history = useHistory();
 
   const handleSubmit = (e) => {
     axios
@@ -15,7 +20,8 @@ const Login = () => {
           response.data.username === username &&
           response.data.password === password
         ) {
-          console.log("Logged in");
+          dispatch(setIsAuthenticated(true));
+          history.push("/home");
         }
       });
     e.preventDefault();
